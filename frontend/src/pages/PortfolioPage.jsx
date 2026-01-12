@@ -43,40 +43,40 @@ const PortfolioPage = () => {
   };
 
   return (
-    <div className="bg-[#050505] text-white pt-32 pb-24 min-h-screen">
+    <div className="bg-[#050505] text-[#FFFFFF] pt-32 pb-24 min-h-screen">
       {/* Editorial Header */}
-      <section className="py-20 px-6 border-b border-white/5">
+      <section className="py-24 px-6 border-b border-white/10">
         <div className="container mx-auto max-w-5xl text-center">
-          <div className="flex justify-center mb-6">
-            <span className="text-xs uppercase tracking-[0.5em] text-[#C5A059] font-medium">The Gallery</span>
+          <div className="flex justify-center mb-8">
+            <span className="text-xs uppercase tracking-[0.5em] text-[#D4AF37] font-bold">The Gallery</span>
           </div>
-          <h1 className="heading-primary mb-8 font-serif uppercase tracking-widest">
+          <h1 className="heading-primary mb-10 font-serif uppercase tracking-widest text-white">
             Visual <span className="italic gold-gradient">Poetry.</span>
           </h1>
-          <p className="text-secondary text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="text-[#F2F2F2] text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed">
             A curated selection of our most poignant stories. Each frame is a testament
-            to the silent language of love and connection.
+            to the silent language of love and connection. Captured with precision and artistry.
           </p>
         </div>
       </section>
 
-      {/* Filter Menu - Minimalist */}
-      <section className="sticky top-[80px] z-40 bg-[#050505]/80 backdrop-blur-md py-6 px-6">
+      {/* Filter Menu - Optimized for Readability */}
+      <section className="sticky top-[80px] z-40 bg-[#050505]/95 backdrop-blur-xl py-8 px-6 border-b border-white/5">
         <div className="container mx-auto overflow-x-auto">
-          <div className="flex justify-center items-center gap-2 md:gap-8 min-w-max">
-            <Filter className="w-4 h-4 text-[#C5A059] mr-2" />
+          <div className="flex justify-center items-center gap-4 md:gap-12 min-w-max">
+            <Filter className="w-4 h-4 text-[#D4AF37] mr-2" />
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`text-xs uppercase tracking-[0.3em] font-medium transition-all duration-500 hover:text-[#C5A059] relative py-2 ${activeCategory === category
-                  ? 'text-[#C5A059]'
-                  : 'text-white/80'
+                className={`text-xs uppercase tracking-[0.3em] font-semibold transition-all duration-500 relative py-3 px-2 ${activeCategory === category
+                    ? 'text-[#D4AF37]'
+                    : 'text-[#FFFFFF] opacity-60 hover:opacity-100'
                   }`}
               >
                 {category}
                 {activeCategory === category && (
-                  <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#C5A059]" />
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#D4AF37]" />
                 )}
               </button>
             ))}
@@ -84,34 +84,33 @@ const PortfolioPage = () => {
         </div>
       </section>
 
-      {/* Photo Grid - Masonry-ish feel */}
+      {/* Photo Grid */}
       {filteredItems.length > 0 && (
-        <section className="px-6 py-20">
+        <section className="px-6 py-24">
           <div className="container mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
               {filteredItems.map((item, index) => {
-                // High-end alternating grid logic
                 const colSpan = (index % 5 === 0) ? 'md:col-span-12' : (index % 5 === 1 || index % 5 === 4) ? 'md:col-span-7' : 'md:col-span-5';
                 const aspectRatio = (index % 5 === 0) ? 'aspect-[21/9]' : (index % 5 === 1 || index % 5 === 4) ? 'aspect-[4/3]' : 'aspect-[4/5]';
 
                 return (
                   <div
                     key={item.id}
-                    className={`${colSpan} group relative overflow-hidden cursor-none text-reveal glass-card ${aspectRatio}`}
+                    className={`${colSpan} group relative overflow-hidden cursor-pointer text-reveal glass-card ${aspectRatio}`}
                     onClick={() => openLightbox(index)}
                   >
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
 
-                    <div className="absolute inset-0 p-10 flex flex-col justify-end translate-y-6 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
-                      <span className="text-[10px] uppercase tracking-[0.4em] text-[#C5A059] mb-4">{item.category}</span>
-                      <h3 className="text-3xl font-serif mb-2 italic">{item.title}</h3>
-                      <p className="text-xs uppercase tracking-widest text-white/60 font-light">{item.location}</p>
+                    <div className="absolute inset-0 p-12 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
+                      <span className="text-xs uppercase tracking-[0.4em] text-[#D4AF37] mb-4 font-bold">{item.category}</span>
+                      <h3 className="text-4xl font-serif mb-3 italic text-white">{item.title}</h3>
+                      <p className="text-sm uppercase tracking-widest text-[#FFFFFF] font-medium">{item.location}</p>
                     </div>
                   </div>
                 );
@@ -123,15 +122,15 @@ const PortfolioPage = () => {
 
       {/* Cinematic Film Section */}
       {showVideos && videoItems.length > 0 && (
-        <section className="px-6 py-32 bg-[#080808] border-t border-white/5">
+        <section className="px-6 py-32 bg-[#080808] border-t border-white/10">
           <div className="container mx-auto">
-            <div className="flex items-center gap-6 mb-16">
+            <div className="flex items-center gap-8 mb-20">
               <div className="h-[1px] flex-1 bg-white/10" />
-              <h2 className="heading-secondary italic">Cinematic Art</h2>
+              <h2 className="heading-secondary italic text-white uppercase tracking-widest">Cinematic Art</h2>
               <div className="h-[1px] flex-1 bg-white/10" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
               {videoItems.map((video) => (
                 <div
                   key={video.id}
@@ -144,15 +143,15 @@ const PortfolioPage = () => {
                       alt={video.title}
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all duration-500">
-                      <div className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center transition-all bg-black/40 backdrop-blur-sm group-hover:scale-110 group-hover:border-[#C5A059]">
-                        <Play className="w-5 h-5 text-white ml-1 fill-white" />
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/30 transition-all duration-500">
+                      <div className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center transition-all bg-black/60 backdrop-blur-sm group-hover:scale-110 group-hover:border-[#D4AF37]">
+                        <Play className="w-6 h-6 text-white ml-1 fill-white" />
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6">
-                    <h3 className="text-lg font-serif mb-2 tracking-wide group-hover:text-[#C5A059] transition-colors">{video.title}</h3>
-                    <p className="text-[10px] uppercase tracking-[0.3em] text-muted font-light">{video.duration}</p>
+                  <div className="mt-8">
+                    <h3 className="text-2xl font-serif mb-3 tracking-wide text-white group-hover:text-[#D4AF37] transition-colors">{video.title}</h3>
+                    <p className="text-xs uppercase tracking-[0.3em] text-[#D1D1D1] font-medium">{video.duration}</p>
                   </div>
                 </div>
               ))}
@@ -163,13 +162,13 @@ const PortfolioPage = () => {
 
       {/* Lightbox / Gallery View */}
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-        <DialogContent className="max-w-[100vw] w-full h-[100vh] p-0 bg-black/95 border-none shadow-none rounded-none focus:outline-none">
+        <DialogContent className="max-w-[100vw] w-full h-[100vh] p-0 bg-black/98 border-none shadow-none rounded-none focus:outline-none">
           <div className="relative w-full h-full flex flex-col items-center justify-center">
             <button
               onClick={() => setLightboxOpen(false)}
-              className="absolute top-8 right-8 z-[110] text-white/50 hover:text-white transition-colors"
+              className="absolute top-10 right-10 z-[110] text-white hover:text-[#D4AF37] transition-colors"
             >
-              <X className="w-8 h-8 font-light" />
+              <X className="w-10 h-10 font-bold" />
             </button>
 
             {filteredItems.length > 0 && (
@@ -178,31 +177,31 @@ const PortfolioPage = () => {
                   <img
                     src={filteredItems[currentImageIndex]?.image}
                     alt={filteredItems[currentImageIndex]?.title}
-                    className="max-w-full max-h-[80vh] object-contain shadow-2xl"
+                    className="max-w-full max-h-[85vh] object-contain shadow-2xl"
                   />
 
                   <button
                     onClick={prevImage}
-                    className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 text-white/20 hover:text-[#C5A059] transition-all p-4"
+                    className="absolute left-4 md:left-12 top-1/2 -translate-y-1/2 text-white/50 hover:text-[#D4AF37] transition-all p-4 bg-black/20 rounded-full"
                   >
-                    <ChevronLeft className="w-10 h-10" />
+                    <ChevronLeft className="w-12 h-12" />
                   </button>
                   <button
                     onClick={nextImage}
-                    className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 text-white/20 hover:text-[#C5A059] transition-all p-4"
+                    className="absolute right-4 md:right-12 top-1/2 -translate-y-1/2 text-white/50 hover:text-[#D4AF37] transition-all p-4 bg-black/20 rounded-full"
                   >
-                    <ChevronRight className="w-10 h-10" />
+                    <ChevronRight className="w-12 h-12" />
                   </button>
                 </div>
 
-                <div className="mt-8 text-center animate-fadeInUp">
-                  <h3 className="text-2xl font-serif mb-2 italic">
+                <div className="mt-10 text-center">
+                  <h3 className="text-3xl font-serif mb-4 italic text-white uppercase tracking-wider">
                     {filteredItems[currentImageIndex]?.title}
                   </h3>
-                  <div className="flex items-center justify-center gap-4">
-                    <span className="text-[10px] uppercase tracking-[0.4em] text-[#C5A059]">{filteredItems[currentImageIndex]?.category}</span>
-                    <span className="w-4 h-[1px] bg-white/20" />
-                    <span className="text-[10px] uppercase tracking-[0.4em] text-white/40">{filteredItems[currentImageIndex]?.location}</span>
+                  <div className="flex items-center justify-center gap-6">
+                    <span className="text-xs uppercase tracking-[0.4em] text-[#D4AF37] font-bold">{filteredItems[currentImageIndex]?.category}</span>
+                    <span className="w-8 h-[1px] bg-white/40" />
+                    <span className="text-xs uppercase tracking-[0.4em] text-white/90 font-medium">{filteredItems[currentImageIndex]?.location}</span>
                   </div>
                 </div>
               </div>
@@ -213,21 +212,21 @@ const PortfolioPage = () => {
 
       {/* Video Modal */}
       <Dialog open={videoModalOpen} onOpenChange={setVideoModalOpen}>
-        <DialogContent className="max-w-6xl w-full p-0 bg-black/90 border border-white/5 backdrop-blur-xl aspect-video rounded-none">
+        <DialogContent className="max-w-6xl w-full p-0 bg-black/95 border border-white/10 backdrop-blur-2xl aspect-video rounded-none shadow-2xl">
           <div className="relative w-full h-full">
             <button
               onClick={() => setVideoModalOpen(false)}
-              className="absolute -top-12 right-0 text-white/50 hover:text-white"
+              className="absolute -top-16 right-0 text-white hover:text-[#D4AF37]"
             >
-              <X className="w-6 h-6" />
+              <X className="w-8 h-8 font-bold" />
             </button>
             {selectedVideo && (
-              <div className="w-full h-full bg-[#050505] flex flex-col items-center justify-center">
-                <div className="w-20 h-20 rounded-full bg-[#C5A059]/10 flex items-center justify-center mb-8 border border-[#C5A059]/30">
-                  <Play className="w-8 h-8 text-[#C5A059] fill-[#C5A059]" />
+              <div className="w-full h-full bg-[#050505] flex flex-col items-center justify-center p-12">
+                <div className="w-24 h-24 rounded-full bg-[#D4AF37]/10 flex items-center justify-center mb-10 border border-[#D4AF37]/40">
+                  <Play className="w-10 h-10 text-[#D4AF37] fill-[#D4AF37]" />
                 </div>
-                <h2 className="text-3xl font-serif mb-4 italic tracking-wider">{selectedVideo.title}</h2>
-                <p className="text-xs uppercase tracking-[0.5em] text-muted">Feature Film Preview Incoming</p>
+                <h2 className="text-4xl font-serif mb-6 italic tracking-widest text-white">{selectedVideo.title}</h2>
+                <p className="text-sm uppercase tracking-[0.6em] text-[#D1D1D1] font-medium">Feature Film Preview Incoming</p>
               </div>
             )}
           </div>

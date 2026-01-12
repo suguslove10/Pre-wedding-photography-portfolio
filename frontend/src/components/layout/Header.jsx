@@ -27,8 +27,8 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${isScrolled
-        ? 'bg-black/80 backdrop-blur-md py-4 border-b border-white/5'
-        : 'bg-transparent py-8'
+          ? 'bg-black/95 backdrop-blur-xl py-5 border-b border-white/10 shadow-2xl'
+          : 'bg-transparent py-10'
         }`}
     >
       <div className="container mx-auto px-6 max-w-7xl">
@@ -36,34 +36,34 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="group relative">
             <div className="flex flex-col">
-              <span className="font-serif text-2xl tracking-[0.15em] text-white group-hover:gold-gradient transition-all duration-500 uppercase">
+              <span className="font-serif text-2xl tracking-[0.2em] text-white group-hover:gold-gradient transition-all duration-500 uppercase font-medium">
                 Prewed Bliss
               </span>
-              <span className="text-[10px] uppercase tracking-[0.6em] text-[#C5A059] mt-1 opacity-90 group-hover:opacity-100 transition-opacity">
+              <span className="text-[11px] uppercase tracking-[0.6em] text-[#D4AF37] mt-1.5 opacity-100 group-hover:gold-gradient transition-opacity font-bold">
                 Cinematic Artistry
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-12">
+          <div className="hidden lg:flex items-center gap-14">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-xs font-medium tracking-[0.3em] uppercase transition-all duration-500 hover:text-[#C5A059] relative group ${isActive(link.path) ? 'text-[#C5A059]' : 'text-white/80'
+                className={`text-[13px] font-bold tracking-[0.3em] uppercase transition-all duration-500 hover:text-[#D4AF37] relative group ${isActive(link.path) ? 'text-[#D4AF37]' : 'text-[#FFFFFF]'
                   }`}
               >
                 {link.name}
-                <span className={`absolute -bottom-2 left-0 w-0 h-[1px] bg-[#C5A059] transition-all duration-500 group-hover:w-full ${isActive(link.path) ? 'w-full' : ''}`} />
+                <span className={`absolute -bottom-3 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all duration-500 group-hover:w-full ${isActive(link.path) ? 'w-full' : ''}`} />
               </Link>
             ))}
 
             <Link
               to="/booking"
-              className="text-[10px] uppercase tracking-[0.3em] px-8 py-3 border border-[#C5A059]/30 hover:bg-[#C5A059] hover:text-black transition-all duration-500"
+              className="text-[12px] font-bold uppercase tracking-[0.4em] px-10 py-4 border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-500"
             >
-              Reserve Session
+              Reserve
             </Link>
           </div>
 
@@ -74,21 +74,21 @@ const Header = () => {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-8 h-8" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-8 h-8" />
             )}
           </button>
         </nav>
 
         {/* Mobile Menu Overlay */}
         <div className={`fixed inset-0 bg-[#050505] z-[-1] transition-transform duration-700 ease-in-out lg:hidden ${isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-          <div className="h-full flex flex-col items-center justify-center gap-10 px-6 pt-20">
+          <div className="h-full flex flex-col items-center justify-center gap-12 px-6 pt-24">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-2xl font-serif tracking-widest text-white transition-colors hover:text-[#C5A059] ${isActive(link.path) ? 'text-[#C5A059]' : ''
+                className={`text-3xl font-serif tracking-widest text-[#FFFFFF] transition-colors hover:text-[#D4AF37] ${isActive(link.path) ? 'text-[#D4AF37]' : ''
                   }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -97,16 +97,11 @@ const Header = () => {
             ))}
             <Link
               to="/booking"
-              className="mt-8 px-10 py-4 bg-[#C5A059] text-black text-xs font-semibold tracking-widest uppercase hover:bg-white transition-all"
+              className="mt-12 px-14 py-5 bg-[#D4AF37] text-black text-sm font-black tracking-widest uppercase hover:bg-white transition-all shadow-xl"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Reserve Session
             </Link>
-
-            {/* Mobile Footer Info */}
-            <div className="mt-auto pb-12 text-center">
-              <p className="text-[10px] tracking-[0.4em] text-muted uppercase">Fine Art Photography</p>
-            </div>
           </div>
         </div>
       </div>

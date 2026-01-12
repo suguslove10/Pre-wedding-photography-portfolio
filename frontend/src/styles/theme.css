@@ -1,4 +1,4 @@
-/* Luxury Dark Portfolio Theme */
+/* Luxury Dark Portfolio Theme - READABILITY OPTIMIZED */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@100;200;300;400;500;600&display=swap');
 
 :root {
@@ -7,18 +7,19 @@
   --bg-dark: #0A0A0A;
   --bg-accent: #111111;
 
-  --color-gold: #C5A059;
-  --color-gold-muted: #8E7341;
-  --color-gold-glow: rgba(197, 160, 89, 0.3);
+  --color-gold: #D4AF37;
+  /* Brighter gold */
+  --color-gold-muted: #B8962E;
+  --color-gold-glow: rgba(212, 175, 55, 0.4);
 
   --text-primary: #FFFFFF;
-  --text-secondary: #E0E0E0;
-  /* Brighter for readability */
-  --text-muted: #B0B0B0;
-  /* Brighter for readability */
+  --text-secondary: #F2F2F2;
+  /* Brighter for maximum readability */
+  --text-muted: #D1D1D1;
+  /* Brighter for maximum readability */
 
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
 
   /* Typography */
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -65,8 +66,7 @@ body {
   font-family: var(--font-serif);
   font-weight: 400;
   line-height: 1.1;
-  letter-spacing: -0.03em;
-  font-style: italic;
+  letter-spacing: -0.01em;
 }
 
 .heading-primary {
@@ -74,6 +74,7 @@ body {
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 400;
   line-height: 1.1;
+  color: #FFFFFF;
 }
 
 .heading-secondary {
@@ -81,6 +82,7 @@ body {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 400;
   line-height: 1.2;
+  color: #FFFFFF;
 }
 
 .text-reveal {
@@ -96,7 +98,7 @@ body {
 
 /* Luxury Elements */
 .gold-gradient {
-  background: linear-gradient(135deg, #C5A059 0%, #F1D396 50%, #C5A059 100%);
+  background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #FFD700 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -109,105 +111,56 @@ body {
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(197, 160, 89, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(212, 175, 55, 0.5);
 }
 
 /* Button Styles */
 .btn-luxury {
   position: relative;
   padding: 1rem 2.5rem;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  /* Increased */
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--text-primary);
+  color: #FFFFFF;
   background: transparent;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   overflow: hidden;
   transition: all var(--transition-normal);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.btn-luxury::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transition: 0.5s;
-}
-
-.btn-luxury:hover::before {
-  left: 100%;
+  font-weight: 500;
 }
 
 .btn-luxury:hover {
   border-color: var(--color-gold);
-  letter-spacing: 0.35em;
-  box-shadow: 0 0 20px var(--color-gold-glow);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .btn-gold-solid {
   background-color: var(--color-gold);
-  color: #000;
+  color: #000000;
   padding: 1rem 2.5rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
+  font-size: 0.8rem;
+  /* Increased */
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   border: none;
   transition: all var(--transition-normal);
 }
 
 .btn-gold-solid:hover {
-  background-color: #f1d396;
-  transform: scale(1.02);
-  box-shadow: 0 0 30px var(--color-gold-glow);
-}
-
-/* Image Animations */
-.reveal-img-container {
-  overflow: hidden;
-  position: relative;
-}
-
-.reveal-img {
-  transform: scale(1.2);
-  transition: transform 1.5s var(--transition-bezier);
-}
-
-.reveal-img.active {
-  transform: scale(1);
-}
-
-/* Animations */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg,
-      var(--bg-accent) 0%,
-      rgba(255, 255, 255, 0.05) 50%,
-      var(--bg-accent) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite linear;
+  background-color: #FFD700;
+  transform: translateY(-2px);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -215,7 +168,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-gold-muted);
+  background: #333;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -225,23 +178,4 @@ body {
 /* Section Spacing */
 .section-luxury {
   padding: var(--spacing-3xl) 0;
-}
-
-/* Floating Animation */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.float {
-  animation: float 4s ease-in-out infinite;
 }
