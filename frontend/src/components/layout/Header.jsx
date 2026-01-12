@@ -27,8 +27,8 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${isScrolled
-          ? 'bg-black/80 backdrop-blur-md py-4 border-b border-white/5'
-          : 'bg-transparent py-8'
+        ? 'bg-black/80 backdrop-blur-md py-4 border-b border-white/5'
+        : 'bg-transparent py-8'
         }`}
     >
       <div className="container mx-auto px-6 max-w-7xl">
@@ -39,7 +39,7 @@ const Header = () => {
               <span className="font-serif text-2xl tracking-[0.15em] text-white group-hover:gold-gradient transition-all duration-500 uppercase">
                 Prewed Bliss
               </span>
-              <span className="text-[8px] uppercase tracking-[0.6em] text-[#C5A059] mt-1 opacity-80 group-hover:opacity-100 transition-opacity">
+              <span className="text-[10px] uppercase tracking-[0.6em] text-[#C5A059] mt-1 opacity-90 group-hover:opacity-100 transition-opacity">
                 Cinematic Artistry
               </span>
             </div>
@@ -51,7 +51,7 @@ const Header = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-[10px] font-medium tracking-[0.3em] uppercase transition-all duration-500 hover:text-[#C5A059] relative group ${isActive(link.path) ? 'text-[#C5A059]' : 'text-white/70'
+                className={`text-xs font-medium tracking-[0.3em] uppercase transition-all duration-500 hover:text-[#C5A059] relative group ${isActive(link.path) ? 'text-[#C5A059]' : 'text-white/80'
                   }`}
               >
                 {link.name}

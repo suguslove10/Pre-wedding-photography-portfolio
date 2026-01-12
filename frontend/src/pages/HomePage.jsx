@@ -53,7 +53,7 @@ const HomePage = () => {
             Meets <span className="font-serif">Artistry.</span>
           </h1>
 
-          <p className="text-secondary text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 opacity-80 leading-relaxed">
+          <p className="text-secondary text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 leading-relaxed">
             {heroSlides[currentSlide].subtitle}
           </p>
 

@@ -48,12 +48,12 @@ const PortfolioPage = () => {
       <section className="py-20 px-6 border-b border-white/5">
         <div className="container mx-auto max-w-5xl text-center">
           <div className="flex justify-center mb-6">
-            <span className="text-[10px] uppercase tracking-[0.5em] text-[#C5A059]">The Gallery</span>
+            <span className="text-xs uppercase tracking-[0.5em] text-[#C5A059] font-medium">The Gallery</span>
           </div>
           <h1 className="heading-primary mb-8 font-serif uppercase tracking-widest">
             Visual <span className="italic gold-gradient">Poetry.</span>
           </h1>
-          <p className="text-secondary text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed opacity-60">
+          <p className="text-secondary text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed">
             A curated selection of our most poignant stories. Each frame is a testament
             to the silent language of love and connection.
           </p>
@@ -64,14 +64,14 @@ const PortfolioPage = () => {
       <section className="sticky top-[80px] z-40 bg-[#050505]/80 backdrop-blur-md py-6 px-6">
         <div className="container mx-auto overflow-x-auto">
           <div className="flex justify-center items-center gap-2 md:gap-8 min-w-max">
-            <Filter className="w-3 h-3 text-[#C5A059] mr-2" />
+            <Filter className="w-4 h-4 text-[#C5A059] mr-2" />
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`text-[10px] uppercase tracking-[0.3em] transition-all duration-500 hover:text-[#C5A059] relative py-2 ${activeCategory === category
-                    ? 'text-[#C5A059]'
-                    : 'text-white/40'
+                className={`text-xs uppercase tracking-[0.3em] font-medium transition-all duration-500 hover:text-[#C5A059] relative py-2 ${activeCategory === category
+                  ? 'text-[#C5A059]'
+                  : 'text-white/80'
                   }`}
               >
                 {category}
