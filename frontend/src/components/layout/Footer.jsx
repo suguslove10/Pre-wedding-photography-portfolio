@@ -1,127 +1,108 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Youtube, Mail, Phone, MapPin, Heart } from 'lucide-react';
+import { Instagram, Facebook, Youtube, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import { contactInfo } from '../../data/mock';
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-[#1A1A1A] text-white">
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand Section */}
-          <div className="lg:col-span-1">
-            <h3
-              className="text-2xl mb-4"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Alexandra Rose
-            </h3>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Capturing timeless moments and creating beautiful memories for couples around the world.
+    <footer className="bg-[#050505] text-white border-t border-white/5 pt-24 pb-12">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
+
+          {/* Brand Identity */}
+          <div className="lg:col-span-5">
+            <Link to="/" onClick={scrollToTop} className="inline-block mb-8">
+              <span className="font-serif text-3xl tracking-[0.2em] uppercase italic gold-gradient">
+                Prewed Bliss
+              </span>
+              <p className="text-[10px] uppercase tracking-[0.5em] text-[#C5A059] mt-2 font-light">
+                Cinematic Love Stories
+              </p>
+            </Link>
+            <p className="text-secondary text-sm font-light leading-relaxed max-w-md opacity-60 mb-10">
+              We specialize in luxury pre-wedding experiences, capturing the silent,
+              romantic dialogue between couples through a cinematic editorial lens.
             </p>
-            <div className="flex gap-4">
-              <a
-                href={contactInfo.social.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 hover:bg-[#D4AF37]"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href={contactInfo.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 hover:bg-[#D4AF37]"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href={contactInfo.social.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 hover:bg-[#D4AF37]"
-              >
-                <Youtube className="w-5 h-5" />
-              </a>
+            <div className="flex gap-6">
+              {[
+                { icon: Instagram, link: contactInfo.social.instagram },
+                { icon: Facebook, link: contactInfo.social.facebook },
+                { icon: Youtube, link: contactInfo.social.youtube }
+              ].map((social, i) => (
+                <a
+                  key={i}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all duration-500 hover:border-[#C5A059] hover:text-[#C5A059] group"
+                >
+                  <social.icon className="w-4 h-4 transition-transform group-hover:scale-110" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              {['Home', 'Portfolio', 'Services', 'About', 'Contact'].map((item) => (
+          {/* Navigation Links */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[10px] font-medium uppercase tracking-[0.4em] text-[#C5A059] mb-8">Navigation</h4>
+            <ul className="space-y-4">
+              {['Stories', 'The Vision', 'Offerings', 'Connect'].map((item) => (
                 <li key={item}>
                   <Link
-                    to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                    className="text-gray-400 text-sm transition-colors duration-300 hover:text-[#D4AF37]"
+                    to={item === 'Stories' ? '/portfolio' : item === 'The Vision' ? '/about' : item === 'Offerings' ? '/services' : '/contact'}
+                    className="text-white/40 text-xs uppercase tracking-widest transition-all duration-300 hover:text-white flex items-center group"
                   >
-                    {item}
+                    {item} <ArrowUpRight className="w-3 h-3 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider mb-6">Services</h4>
-            <ul className="space-y-3">
-              {['Pre-Wedding Shoots', 'Engagement Sessions', 'Couple Photography', 'Cinematography', 'Photo Albums'].map(
-                (item) => (
-                  <li key={item}>
-                    <Link
-                      to="/services"
-                      className="text-gray-400 text-sm transition-colors duration-300 hover:text-[#D4AF37]"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                )
-              )}
-            </ul>
-          </div>
+          {/* Contact Details */}
+          <div className="lg:col-span-5">
+            <h4 className="text-[10px] font-medium uppercase tracking-[0.4em] text-[#C5A059] mb-8">The Studio</h4>
+            <div className="space-y-8">
+              <div className="flex items-start gap-4 group">
+                <MapPin className="w-4 h-4 text-[#C5A059] mt-0.5" />
+                <div>
+                  <p className="text-white/80 text-xs font-light tracking-wide leading-relaxed">
+                    {contactInfo.address}
+                  </p>
+                </div>
+              </div>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider mb-6">Contact</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-[#D4AF37] flex-shrink-0 mt-0.5" />
-                <span className="text-gray-400 text-sm">{contactInfo.address}</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-[#D4AF37]" />
-                <a
-                  href={`tel:${contactInfo.phone}`}
-                  className="text-gray-400 text-sm transition-colors hover:text-[#D4AF37]"
-                >
-                  {contactInfo.phone}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <a href={`tel:${contactInfo.phone}`} className="flex items-center gap-4 group">
+                  <Phone className="w-4 h-4 text-[#C5A059]" />
+                  <span className="text-white/80 text-xs font-light tracking-widest group-hover:text-white transition-colors">
+                    {contactInfo.phone}
+                  </span>
                 </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-[#D4AF37]" />
-                <a
-                  href={`mailto:${contactInfo.email}`}
-                  className="text-gray-400 text-sm transition-colors hover:text-[#D4AF37]"
-                >
-                  {contactInfo.email}
+
+                <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-4 group">
+                  <Mail className="w-4 h-4 text-[#C5A059]" />
+                  <span className="text-white/80 text-xs font-light tracking-widest group-hover:text-white transition-colors">
+                    {contactInfo.email}
+                  </span>
                 </a>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Alexandra Rose Photography. All rights reserved.
-            </p>
-            <p className="text-gray-500 text-sm flex items-center gap-1">
-              Made with <Heart className="w-4 h-4 text-[#D4AF37]" /> for couples in love
-            </p>
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
+          <p className="text-[9px] text-white/30 uppercase tracking-[0.3em] font-light">
+            © {new Date().getFullYear()} Prewed Bliss Artistry. All Rights Reserved.
+          </p>
+          <div className="flex gap-8">
+            <Link to="/privacy" className="text-[9px] text-white/30 uppercase tracking-[0.3em] hover:text-white transition-colors">Privacy Policy</Link>
+            <button onClick={scrollToTop} className="text-[9px] text-white/30 uppercase tracking-[0.3em] hover:text-[#C5A059] transition-colors">Back to top ↑</button>
           </div>
         </div>
       </div>
